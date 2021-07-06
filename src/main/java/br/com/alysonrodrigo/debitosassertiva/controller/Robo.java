@@ -63,7 +63,7 @@ public class Robo {
         element = driver.findElement(By.id("senha"));
         element.sendKeys(advogado.getSenha());
 
-        element = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/form/span/span/button"));
+        element = driver.findElement(By.xpath("/html/body/div[1]/div/div/form/span/span/button"));
         element.click();
 
         verificaModalOpen("/html/body/div[4]/div[2]/div");
@@ -150,6 +150,7 @@ public class Robo {
 
         try{
             documento = driver.findElement(By.id("documento"));
+            documento.clear();
             documento.sendKeys(cpf);
             achouDocumento = true;
         }catch (Exception e){
@@ -160,6 +161,8 @@ public class Robo {
                     WebElement botaoConsulta = driver.findElement(By.xpath("/html/body/div[1]/div/div[3]/div/div/div/div[1]/div[2]/div/form/div[2]/div[2]/span[2]/span/button"));
                     botaoConsulta.click();
 
+                    dormir(8);
+
                     WebElement temProtesto = driver.findElement(By.xpath("/html/body/div[1]/div/div[3]/div/div/div/div[3]/div/div/div/div[4]/div[2]/div/div[2]/a/div/span[2]/div[1]/div"));
 
                     StringBuilder stringBuilder = new StringBuilder(cpf);
@@ -168,7 +171,7 @@ public class Robo {
                     escreverNoArquivoDebito(stringBuilder.toString());
                     escreverNoArquivoDebitoValidacao(cpf);
 
-                    WebElement abaDados = driver.findElement(By.xpath("/html/body/div[1]/div/div[3]/div/div/div/div[3]/ul/li/a/div/span/a"));
+                    WebElement abaDados = driver.findElement(By.cssSelector("#tab-credito-tab-CPF\\:\\ 929\\.300\\.774-68\\ -\\ Cred\\ PF\\  > div > span > a > i"));
                     abaDados.click();
 
 
